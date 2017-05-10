@@ -102,8 +102,20 @@ build后的文件将会生成dist目录
 - 如需重写异步请求函数，请修改`src/utils/request.js`
   （关于为什么使用axios而不是fetch：在一个无服务器的环境中模拟数据请求，[Mock](https://github.com/nuysoft/Mock)不能拦截Fetch，只能拦截XHR，所以我选了一个纯Ajax的库[axios](https://github.com/mzabriskie/axios)）
 
-### 特别感谢
+### 参考
+
+用户列表：<https://github.com/dvajs/dva-example-user-dashboard>
 
 zuiidea: [https://github.com/zuiidea/antd-admin](https://github.com/zuiidea/antd-admin)
 
 sorrycc: [https://github.com/dvajs/dva-example-user-dashboard](https://github.com/dvajs/dva-example-user-dashboard)
+
+### 截屏
+
+web
+
+![](assets/demo4.gif)
+
+移动
+
+![](assets/demo3.gif)
