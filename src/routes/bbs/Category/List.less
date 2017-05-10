@@ -1,0 +1,30 @@
+.table {
+  td.avatar {
+
+    img {
+      border-radius: 50%;
+    }
+  }
+
+  :global {
+    .ant-table-tbody > tr > td,
+    .ant-table-thead > tr > th {
+
+      &:nth-child(1) {
+        width: 15%;
+      }
+
+      &:nth-child(2) {
+        width: 30%;
+      }
+
+      &:nth-child(3) {
+        width: 40%;
+      }
+
+      &:nth-child(4) {
+        width: 15%;
+      }
+    }
+  }
+}
