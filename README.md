@@ -16,7 +16,7 @@
 
 ## 演示地址
 
-https://pmg1989.github.io
+https://liufulin90.github.io/react-admin
 
 #### 登录账号
 
@@ -94,7 +94,7 @@ build后的文件将会生成dist目录
 
 ### 注意事项
 
-- 生产环境中，如已有数据接口，请将`conf/webpack.config.js`中的 `webpackConfig.plugins 'newband.admin.isMock': true`改为false，以及 `src/utils/index.js`中的`export request from './request-mock'`改为`export request from './request'`
+- 生产环境中，如已有数据接口，请将`conf/webpack.config.release.js`中的 `webpackConfig.plugins 'newband.admin.isMock': true`改为false，以及 `newband.app.admin.API_HOST`的值修改为对应的接口地址
 - 切换`conf/webpack.config.js`中的`'newband.app.admin.IS_DYNAMIC_LOAD': true`,可以调整JavaScript是否动态按需加载
 - 开发环境中，如再mock目录新增文件，请在`src/utils/mock.js`第二行的`mockData`数组中添加
 - 如需重写antd样式配置，请修改`src/theme.js`
