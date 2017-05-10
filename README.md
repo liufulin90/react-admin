@@ -16,7 +16,7 @@
 
 ## 演示地址
 
-https://liufulin90.github.io/react-admin
+[点击预览](http://115.28.18.19:81)
 
 #### 登录账号
 
