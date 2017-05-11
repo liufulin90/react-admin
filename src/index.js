@@ -1,5 +1,6 @@
 // import "babel-polyfill" // 如果需要支持ie 9+，请解注此行即可。
 import './index.html'
+import 'nprogress/nprogress.css'
 import dva from 'dva'
 import { browserHistory } from 'dva/router'
 import createLoading from 'dva-loading'
@@ -13,7 +14,9 @@ const app = dva({
 })
 
 // 2. Plugins
-app.use(createLoading())
+app.use(createLoading({
+  effects: true,
+}))
 
 // 3. Model
 app.model(require('./models/app'))
@@ -39,3 +42,4 @@ if(newband.app.admin.IS_DYNAMIC_LOAD) {
 
 // 5. Start
 app.start('#root')
+

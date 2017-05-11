@@ -2,6 +2,7 @@ import axios from 'axios'
 import { message } from 'antd'
 import { stringify } from 'qs'
 import Cookie from './cookie'
+import NProgress from 'nprogress'
 
 //message 全局配置
 message.config({
@@ -39,6 +40,7 @@ function checkStatus(res) {
 }
 
 function handelData(res) {
+  NProgress.done()
   const data = res.data
   if(data && data.msg && !data.success) {
     message.error(data.msg)
@@ -50,6 +52,7 @@ function handelData(res) {
 }
 
 function handleError(error) {
+  NProgress.done()
   const data = error.response.data
   if(data.errors) {
     message.error(`${data.message}：${data.errors}`, 5)
@@ -65,7 +68,7 @@ export default function request(url, options) {
   if(url !== '/oauth/token' && url !== '/admin/check') {
     url = url + '?access_token=' + Cookie.get('access_token')
   }
-
+  NProgress.start()
   return fetch(url, options)
         .then(checkStatus)
         .then(handelData)

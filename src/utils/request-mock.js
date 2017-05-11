@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { message } from 'antd'
 import { stringify } from 'qs'
+import NProgress from 'nprogress'
 
 //message 全局配置
 message.config({
@@ -34,6 +35,7 @@ function checkStatus(res) {
 }
 
 function handelData(res) {
+  NProgress.done()
   const data = res.data
   if(data && data.msg && !data.success) {
     message.warning(data.msg)
@@ -44,6 +46,7 @@ function handelData(res) {
 }
 
 function handleError(error) {
+  NProgress.done()
   message.error(error.response.data.errors, 5)
 }
 
@@ -56,6 +59,7 @@ export default function request(url, options) {
     return get('http://query.yahooapis.com/v1/public/yql?' + stringify(params))
   }
 
+  NProgress.start()
   return fetch(url, options)
         .then(checkStatus)
         .then(handelData)
