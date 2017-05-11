@@ -1,5 +1,6 @@
-//power = { 1: "查看菜单", 2: "查看详情", 3: "新增", 4: "修改", 5: "删除", 6: "审核", 7: "上传" }
-//options = { MENU: "查看菜单", DETAIL: "查看详情", ADD: "新增", UPDATE: "修改", DELETE: "删除", CHECK: "审核", UPLOAD: "上传" }
+//power = { 1: "查看菜单", 2: "查看页面", 3: "新增", 4: "修改", 5: "删除", 6："查看详情" 7: "审核", 8: "上传"，9:"状态" }
+//options = { MENU: "查看菜单", CONTENT: "查看页面", ADD: "新增", UPDATE: "修改", DELETE: "删除", DETAIL: "查看详情", CHECK: "审核", UPLOAD: "上传"， STATUS:"状态" }
+// import { MENU, CONTENT, DETAIL, ADD, UPDATE, DELETE, CHECK, UPLOAD } from '../constants/options'
 import _ from 'lodash'
 
 const menu = [
