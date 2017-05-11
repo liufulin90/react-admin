@@ -122,6 +122,65 @@ export default function({history, app}) {
             }
           ]
         },
+        //rechart图表
+        {
+          path: 'chart',
+          name: 'chart',
+          childRoutes: [
+            {
+              path: 'lineChart',
+              name: 'lineChart',
+              getComponent(nextState, cb) {
+                require.ensure([], require => {
+                  cb(null, require('./routes/charts/lineChart'))
+                }, 'lineChart')
+              }
+            }, {
+              path: 'barChart',
+              name: 'barChart',
+              getComponent(nextState, cb) {
+                require.ensure([], require => {
+                  cb(null, require('./routes/charts/barChart'))
+                }, 'barChart')
+              }
+            }, {
+              path: 'areaChart',
+              name: 'areaChart',
+              getComponent(nextState, cb) {
+                require.ensure([], require => {
+                  cb(null, require('./routes/charts/areaChart'))
+                }, 'areaChart')
+              }
+            }, {
+              path: 'composedChart',
+              name: 'composedChart',
+              getComponent(nextState, cb) {
+                require.ensure([], require => {
+                  cb(null, require('./routes/charts/composedChart'))
+                }, 'composedChart')
+              }
+            }, {
+              path: 'pieChart',
+              name: 'pieChart',
+              getComponent(nextState, cb) {
+                require.ensure([], require => {
+                  cb(null, require('./routes/charts/pieChart'))
+                }, 'pieChart')
+              }
+            }
+          ]
+        },
+        // 模拟请求
+        {
+          path: 'request',
+          name: 'request',
+          getComponent(nextState, cb) {
+            require.ensure([], require => {
+              registerModel(app, require('./models/request'))
+              cb(null, require('./routes/request'))
+            }, 'request')
+          }
+        },
         //ui
         {
           path: 'ui',

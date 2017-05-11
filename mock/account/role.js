@@ -23,7 +23,14 @@ const dic = {
     16: [1, 2],
     17: [1, 2],
     18: [1, 2],
-    19: [1, 2]
+    19: [1, 2],
+    20: [1, 2],
+    21: [1, 2],
+    22: [1],
+    23: [1, 2],
+    24: [1, 2],
+    25: [1, 2],
+    26: [1, 2]
   },
   2: {
     1: [1],
@@ -70,14 +77,14 @@ let dataKey = mockStorge('AccountRoleList', Mock.mock({
     current: 1
   }
 }))
-
 let dataKeyPL = mockStorge('AccountPowerList', Mock.mock({
   data: dic
 }))
 
 let roleListData = global[dataKey]
 let powerList = global[dataKeyPL]
-
+// console.log('roleListData', JSON.stringify(roleListData))
+// console.log('powerList', JSON.stringify(powerList))
 module.exports = {
 
   'GET /api/role' (req, res) {

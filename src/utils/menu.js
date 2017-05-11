@@ -111,6 +111,61 @@ const menu = [
       },
     ],
   },
+  //图表
+  {
+    id: _.uniqueId(),
+    key: 'chart',
+    name: 'Rechart图表',
+    icon: 'code-o',
+    clickable: false,
+    power: [1],
+    children: [
+      {
+        id: _.uniqueId(),
+        key: 'lineChart',
+        name: '线性图',
+        icon: 'line-chart',
+        power: [1, 2]
+      },
+      {
+        id: _.uniqueId(),
+        key: 'barChart',
+        name: '柱状图',
+        icon: 'bar-chart',
+        power: [1, 2]
+      },
+      {
+        id: _.uniqueId(),
+        key: 'areaChart',
+        name: '面积',
+        icon: 'area-chart',
+        power: [1, 2]
+      },
+      {
+        id: _.uniqueId(),
+        key: 'composedChart',
+        name: '组合',
+        icon: 'dot-chart',
+        power: [1, 2]
+      },
+      {
+        id: _.uniqueId(),
+        key: 'pieChart',
+        name: '饼状',
+        icon: 'pie-chart',
+        power: [1, 2]
+      }
+    ]
+  },
+  //模拟请求
+  {
+    id: _.uniqueId(),
+    key: 'request',
+    name: '模拟请求',
+    icon: 'message',
+    clickable: true,
+    power: [1]
+  },
   //UI组件
   {
     id: _.uniqueId(),
