@@ -3,7 +3,7 @@ import Cookie from './cookie'
 export config from './config'
 
 // 如果是mock需求时返回mockrequest，否则为正式api
-var request = newband.app.admin.ISMOCK ? require('./request-mock').default : require('./request').default
+var request = linxins.app.admin.ISMOCK ? require('./request-mock').default : require('./request').default
 export {
   request
 }
@@ -12,7 +12,7 @@ export { color } from './theme'
 
 let allPathPowers //缓存 localStorage.getItem('allPathPowers') 数据
 
-if(newband.app.admin.ISMOCK){
+if(linxins.app.admin.ISMOCK){
   require('./mock.js')
 }
 

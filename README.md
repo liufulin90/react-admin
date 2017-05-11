@@ -1,7 +1,7 @@
 # react-admin
 
 [![React Native](https://img.shields.io/badge/react-^15.4.1-brightgreen.svg?style=flat-square)](https://github.com/facebook/react)
-[![Ant Design](https://img.shields.io/badge/ant--design-^2.8.2-yellowgreen.svg?style=flat-square)](https://github.com/ant-design/ant-design)
+[![Ant Design](https://img.shields.io/badge/ant--design-^2.9.1-yellowgreen.svg?style=flat-square)](https://github.com/ant-design/ant-design)
 [![dva](https://img.shields.io/badge/dva-^1.1.0-orange.svg?style=flat-square)](https://github.com/dvajs/dva)
 
 [![GitHub issues](https://img.shields.io/github/issues/liufulin90/react-admin.svg?style=flat-square)](https://github.com/liufulin90/react-admin/issues)
@@ -94,8 +94,8 @@ build后的文件将会生成dist目录
 
 ### 注意事项
 
-- 生产环境中，如已有数据接口，请将`conf/webpack.config.release.js`中的 `webpackConfig.plugins 'newband.admin.isMock': true`改为false，以及 `newband.app.admin.API_HOST`的值修改为对应的接口地址
-- 切换`conf/webpack.config.js`中的`'newband.app.admin.IS_DYNAMIC_LOAD': true`,可以调整JavaScript是否动态按需加载
+- 生产环境中，如已有数据接口，请将`conf/webpack.config.release.js`中的 `webpackConfig.plugins 'linxins.admin.isMock': true`改为false，以及 `linxins.app.admin.API_HOST`的值修改为对应的接口地址
+- 切换`conf/webpack.config.js`中的`'linxins.app.admin.IS_DYNAMIC_LOAD': true`,可以调整JavaScript是否动态按需加载
 - 开发环境中，如再mock目录新增文件，请在`src/utils/mock.js`第二行的`mockData`数组中添加
 - 如需重写antd样式配置，请修改`src/theme.js`
 - 项目配置文件在`src/utils/config.js`

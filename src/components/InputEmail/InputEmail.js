@@ -10,7 +10,7 @@ class InputEmailComplete extends Component {
     if (!value || value.indexOf('@') >= 0) {
       dataSource = []
     } else {
-      dataSource = ['newband.com', '163.com', 'qq.com'].map(domain => `${value}@${domain}`)
+      dataSource = ['linxins.com', '163.com', 'qq.com'].map(domain => `${value}@${domain}`)
     }
     this.setState({ dataSource })
   }

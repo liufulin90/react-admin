@@ -9,7 +9,7 @@ message.config({
   top: 50
 })
 
-axios.defaults.baseURL = newband.app.admin.API_HOST
+axios.defaults.baseURL = linxins.app.admin.API_HOST
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8'
 //axios.defaults.headers.common['Authorization'] = sessionStorage.getItem('Authorization')
 

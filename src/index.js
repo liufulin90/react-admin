@@ -22,7 +22,7 @@ app.use(createLoading({
 app.model(require('./models/app'))
 app.model(require('./models/modal'))
 
-if(newband.app.admin.IS_DYNAMIC_LOAD) {
+if(linxins.app.admin.IS_DYNAMIC_LOAD) {
   // 4. Router for browserHistory dynamic load
   app.router(require('./router-dynamic'))
 } else {

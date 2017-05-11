@@ -26,12 +26,12 @@ module.exports = function (webpackConfig, env) {
   }
   //mock data config
   webpackConfig.plugins.push(new webpack.DefinePlugin({
-    'newband.app.admin.ISMOCK': true,
-    'newband.app.admin.IS_DYNAMIC_LOAD': true,
-    'newband.app.admin.API_HOST': JSON.stringify('http://ec2-54-223-130-122.cn-north-1.compute.amazonaws.com.cn:81/v2'),
-    'newband.app.admin.CLIENT_ID': JSON.stringify('8_458xy3o1w2g4cgwkk0ksgs0kkkw8o4soc000g004csoo840og4'),
-    'newband.app.admin.CLIENT_SECRET': JSON.stringify('2iwh0zfunzswgss8s0ks4scoo4w080sskcowgkoc0s8swg8goo'),
-    'newband.app.admin.GRANT_TYPE': JSON.stringify('client_credentials')
+    'linxins.app.admin.ISMOCK': true,
+    'linxins.app.admin.IS_DYNAMIC_LOAD': true,
+    'linxins.app.admin.API_HOST': JSON.stringify('http://ec2-54-223-130-122.cn-north-1.compute.amazonaws.com.cn:81/v2'),
+    'linxins.app.admin.CLIENT_ID': JSON.stringify('8_458xy3o1w2g4cgwkk0ksgs0kkkw8o4soc000g004csoo840og4'),
+    'linxins.app.admin.CLIENT_SECRET': JSON.stringify('2iwh0zfunzswgss8s0ks4scoo4w080sskcowgkoc0s8swg8goo'),
+    'linxins.app.admin.GRANT_TYPE': JSON.stringify('client_credentials')
   }))
 
   // Don't extract common.js and common.css (please extract if use common.js)

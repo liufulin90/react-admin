@@ -53,7 +53,7 @@ class UploadFiles extends React.Component {
       return fileList
     }
 
-    let actionUrl = newband.app.admin.API_HOST + '/file/upload/formData?access_token=' + Cookie.get('access_token')
+    let actionUrl = linxins.app.admin.API_HOST + '/file/upload/formData?access_token=' + Cookie.get('access_token')
     if(!!path) {
       actionUrl += '&path=' + path
     }
