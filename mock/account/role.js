@@ -2,12 +2,12 @@ const qs = require('qs')
 const Mock = require('mockjs')
 import mockStorge from '../../src/utils/mockStorge'
 import { getBody } from '../utils'
-
+//power = { 1: "查看菜单", 2: "查看页面", 3: "新增", 4: "修改", 5: "删除", 6："查看详情" 7: "审核", 8: "上传"，9:"状态" }
 const dic = {
   1: {
     1: [1, 2],
     2: [1],
-    3: [1, 2, 3, 4, 5],
+    3: [1, 2, 3, 4, 5, 6, 7, 8, 9],
     4: [1, 2, 3, 4, 5],
     5: [1, 2, 3, 4, 5],
     6: [1],
