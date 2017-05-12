@@ -30,7 +30,7 @@ function DataTable({dispatch, location, className, pagination, animate, ...props
   let tableProps = {
     simple: true,
     bordered: true,
-    scroll: {x: 1200},
+    scroll: {x: 1000},
     onChange: onPageChange,
     pagination: !!pagination && {...pagination, showSizeChanger: true, showQuickJumper: true, showTotal: total => `共 ${total} 条`},
     ...props

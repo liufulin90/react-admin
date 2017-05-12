@@ -25,7 +25,7 @@ const menu = [
         id: _.uniqueId(),
         key: 'admin',
         name: '管理员',
-        power: [1, 2, 3, 4, 5]
+        power: [1, 2, 3, 4, 5, 6, 7, 8]
       },
       {
         id: _.uniqueId(),

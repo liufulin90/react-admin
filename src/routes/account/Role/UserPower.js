@@ -48,7 +48,7 @@ class UserPower extends Component {
     const columns = [{
       title: '菜单选项',
       dataIndex: 'name',
-      width: '30%',
+      width: '20%',
       render: (text, record) => record.icon ?
              <span>
                <Icon type={record.icon} /> {text}
@@ -56,7 +56,7 @@ class UserPower extends Component {
              text
     }, {
       title: '操作权限',
-      width: '60%',
+      width: '70%',
       className: styles["text-left"],
       render: (text, record) => (
         <CheckboxGroup options={getPowerText(record)} value={this.state.userPower[record.id]} onChange={(checkedValues) => this.onChangePower(checkedValues, record)}/>
