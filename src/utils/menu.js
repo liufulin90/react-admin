@@ -25,7 +25,7 @@ const menu = [
         id: _.uniqueId(),
         key: 'admin',
         name: '管理员',
-        power: [1, 2, 3, 4, 5, 6, 7, 8]
+        power: [1, 2, 3, 4, 5, 6, 7, 8, 9]
       },
       {
         id: _.uniqueId(),
@@ -165,7 +165,7 @@ const menu = [
     name: '模拟请求',
     icon: 'message',
     clickable: true,
-    power: [1]
+    power: [1, 2]
   },
   //UI组件
   {

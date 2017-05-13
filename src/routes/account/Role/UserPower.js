@@ -2,7 +2,7 @@ import React, { PropTypes, Component } from 'react'
 import { Icon, Checkbox } from 'antd'
 import { menu, equalSet } from '../../../utils'
 import {DataTable} from '../../../components/'
-import { MENU, CONTENT, DETAIL, ADD, UPDATE, DELETE, CHECK, UPLOAD } from '../../../constants/options'
+import { MENU, CONTENT, DETAIL, ADD, UPDATE, DELETE, CHECK, UPLOAD, STATUS } from '../../../constants/options'
 import styles from './UserPower.less'
 
 const CheckboxGroup = Checkbox.Group
@@ -16,7 +16,8 @@ const getPowerText = (item) => {
     [UPDATE]: "修改",
     [DELETE]: "删除",
     [CHECK]: "审核",
-    [UPLOAD]: "上传"
+    [UPLOAD]: "上传",
+    [STATUS]: "状态"
   }
   const optionsPowerName = item.power.map((cur) => {
     return { label: powerName[cur], value: cur }
@@ -35,6 +36,11 @@ class UserPower extends Component {
     userPower: this.props.powerList
   }
 
+  /**
+   * 操作权限的checkbox发生变化时
+   * @param checkedValues
+   * @param item
+   */
   onChangePower(checkedValues, item){
     if(!!checkedValues.length) {
       this.state.userPower[item.id] = checkedValues
