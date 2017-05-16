@@ -1,7 +1,7 @@
-import { request } from '../../utils'
+import { request, apiConfig } from '../../utils'
 
 export async function update (params) {
-  return request('/api/modifyPassword', {
+  return request(apiConfig.systemModifyPassword, {
     method: 'put',
     data: params
   })

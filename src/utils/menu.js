@@ -58,6 +58,29 @@ const menu = [
       }
     ]
   },
+  // 设备管理
+  {
+    id: _.uniqueId(),
+    key: 'device',
+    name: '设备管理',
+    icon: 'tool',
+    clickable: false,
+    power: [1],
+    children: [
+      {
+        id: _.uniqueId(),
+        key: 'devices',
+        name: '设备',
+        power: [1, 2, 3, 4, 5]
+      },
+      {
+        id: _.uniqueId(),
+        key: 'deviceGroup',
+        name: '分组',
+        power: [1, 2, 3, 4, 5]
+      }
+    ]
+  },
   //bbs
   {
     id: _.uniqueId(),

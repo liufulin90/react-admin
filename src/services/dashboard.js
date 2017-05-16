@@ -1,7 +1,7 @@
-import { request } from '../utils'
+import { request, apiConfig } from '../utils'
 
 export async function myCity (params) {
-  return request('http://www.zuimeitianqi.com/zuimei/myCity', {
+  return request(apiConfig.getMyCity, {
     method: 'get',
     cross: true,
     data: params
@@ -9,7 +9,7 @@ export async function myCity (params) {
 }
 
 export async function queryWeather (params) {
-  return request('http://www.zuimeitianqi.com/zuimei/queryWeather', {
+  return request(apiConfig.queryWeather, {
     method: 'get',
     cross: true,
     data: params
@@ -17,7 +17,7 @@ export async function queryWeather (params) {
 }
 
 export async function query (params) {
-  return request('/api/dashboard', {
+  return request(apiConfig.dashboard, {
     method: 'get',
     data: params
   })

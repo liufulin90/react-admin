@@ -1,6 +1,7 @@
 import menu from './menu'
 import Cookie from './cookie'
 export config from './config'
+export {apiConfig} from './apiconfig'
 
 // 如果是mock需求时返回mockrequest，否则为正式api
 var request = linxins.app.admin.ISMOCK ? require('./request-mock').default : require('./request').default

@@ -105,6 +105,23 @@ export default function({history, app}) {
             }
           ]
         },
+        //设备管理
+        {
+          path: 'device',
+          name: 'device',
+          childRoutes: [
+            {
+              path: 'devices',
+              name: 'devices',
+              getComponent(nextState, cb) {
+                require.ensure([], require => {
+                  registerModel(app, require('./models/device/devices'))
+                  cb(null, require('./routes/device/Devices'))
+                }, 'devices')
+              }
+            }
+          ]
+        },
         //bbs
         {
           path: 'bbs',
