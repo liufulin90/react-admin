@@ -71,7 +71,7 @@ const menu = [
         id: _.uniqueId(),
         key: 'devices',
         name: '设备',
-        power: [1, 2, 3, 4, 5]
+        power: [1, 2, 3, 4, 5, 6]
       },
       {
         id: _.uniqueId(),

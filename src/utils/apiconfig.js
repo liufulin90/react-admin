@@ -16,6 +16,8 @@ var apiConfig = linxins.app.admin.ISMOCK ? {
   // 设备管理
   'deviceDevices': '/api/devices',
   'deviceDevicesItem': '/api/devicesItem',
+  'deviceGroup': '/api/group',
+  'deviceGroupItem': '/api/deviceGroup',
   // 系统设置
   'systemModifyPassword': '/api/modifyPassword',
   // 获取token

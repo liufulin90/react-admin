@@ -9,14 +9,14 @@ let dataKey = mockStorge('DeviceDevicesList', Mock.mock({
       'id|+1': 1,
       name: '@cname',
       phone: /^1[34578]\d{9}$/,
-      'age|11-99': 1,
+      'age|11-70': 1,
       address: '@province()',
       isMale: '@boolean',
       email: '@email',
       status: '@boolean',
-      'roleId|1': [1, 2, 3],
-      'roleName|1': function() {
-        return ["管理员", "教师", "学生"][this.roleId - 1]
+      'groupId|1': [1, 2, 3],
+      'groupName|1': function() {
+        return ["GROUP1", "GROUP2", "GROUP3"][this.groupId - 1]
       },
       createTime: '@datetime',
       avatar: function () {
@@ -25,18 +25,17 @@ let dataKey = mockStorge('DeviceDevicesList', Mock.mock({
     }
   ],
   page: {
-    total: 100,
+    total: 60,
     current: 1
   }
 }))
-
-let AdminListData = global[dataKey]
+let DevicesListData = global[dataKey]
 
 module.exports = {
 
   'GET /api/devicesItem' (req, res) {
     const getItem = qs.parse(req.query)
-    const devicesItem = AdminListData.data.find(function (item) {
+    const devicesItem = DevicesListData.data.find(function (item) {
       return item.id == +getItem.id
     })
     res.json({success: true, data: devicesItem})
@@ -50,7 +49,7 @@ module.exports = {
     let data
     let newPage
 
-    let newData = AdminListData.data.concat()
+    let newData = DevicesListData.data.concat()
 
     if (page.field) {
       const d = newData.filter(function (item) {
@@ -64,9 +63,9 @@ module.exports = {
         total: d.length
       }
     } else {
-      data = AdminListData.data.slice((currentPage - 1) * pageSize, currentPage * pageSize)
-      AdminListData.page.current = currentPage * 1
-      newPage = AdminListData.page
+      data = DevicesListData.data.slice((currentPage - 1) * pageSize, currentPage * pageSize)
+      DevicesListData.page.current = currentPage * 1
+      newPage = DevicesListData.page
     }
     res.json({success: true, data, page: {...newPage, pageSize: Number(pageSize)}})
   },
@@ -76,60 +75,60 @@ module.exports = {
     newData.createTime = Mock.mock('@now')
     newData.avatar = Mock.Random.image('100x100', Mock.Random.color(), '#757575', 'png', newData.name.substr(0, 1))
 
-    const roleListData = global['AccountRoleList'].data
-    const roleList = roleListData.map(item => {
+    const groupListData = global['DeviceGroupList'].data
+    const groupList = groupListData.map(item => {
       return item.name
     })
-    newData.roleName = roleList[newData.roleId - 1]
+    newData.groupName = groupList[newData.groupId - 1]
 
-    newData.id = AdminListData.data.length + 1
-    AdminListData.data.unshift(newData)
+    newData.id = DevicesListData.data.length + 1
+    DevicesListData.data.unshift(newData)
 
-    AdminListData.page.total = AdminListData.data.length
-    AdminListData.page.current = 1
+    DevicesListData.page.total = DevicesListData.data.length
+    DevicesListData.page.current = 1
 
-    global[dataKey] = AdminListData
+    global[dataKey] = DevicesListData
 
-    res.json({success: true, data: AdminListData.data, page: AdminListData.page})
+    res.json({success: true, data: DevicesListData.data, page: DevicesListData.page})
   },
 
   'DELETE /api/devices' (req, res) {
     const deleteItem = getBody(req)
-    AdminListData.data = AdminListData.data.filter(function (item) {
+    DevicesListData.data = DevicesListData.data.filter(function (item) {
       if (item.id === deleteItem.id) {
         return false
       }
       return true
     })
 
-    AdminListData.page.total = AdminListData.data.length
+    DevicesListData.page.total = DevicesListData.data.length
 
-    global[dataKey] = AdminListData
+    global[dataKey] = DevicesListData
 
-    res.json({success: true, data: AdminListData.data, page: AdminListData.page})
+    res.json({success: true, data: DevicesListData.data, page: DevicesListData.page})
   },
 
   'PUT /api/devices' (req, res) {
     const editItem = getBody(req)
 
-    const roleListData = global['AccountRoleList'].data
-    const roleList = roleListData.map(item => {
-      return item.name
+    const groupListData = global['DeviceGroupList'].data
+    const groupList = groupListData.map(item => {
+      return item.groupName
     })
 
     editItem.createTime = Mock.mock('@now')
     editItem.avatar = Mock.Random.image('100x100', Mock.Random.color(), '#757575', 'png', editItem.name.substr(0, 1))
-    editItem.roleName = roleList[editItem.roleId - 1]
+    editItem.groupName = groupList[editItem.groupId - 1]
 
-    AdminListData.data = AdminListData.data.map(function (item) {
+    DevicesListData.data = DevicesListData.data.map(function (item) {
       if (item.id === editItem.id) {
         return editItem
       }
       return item
     })
 
-    global[dataKey] = AdminListData
-    res.json({success: true, data: AdminListData.data, page: AdminListData.page})
+    global[dataKey] = DevicesListData
+    res.json({success: true, data: DevicesListData.data, page: DevicesListData.page})
   }
 
 }

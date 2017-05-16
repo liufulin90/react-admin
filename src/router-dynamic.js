@@ -119,6 +119,16 @@ export default function({history, app}) {
                   cb(null, require('./routes/device/Devices'))
                 }, 'devices')
               }
+            },
+            {
+              path: 'deviceGroup',
+              name: 'deviceGroup',
+              getComponent(nextState, cb) {
+                require.ensure([], require => {
+                  registerModel(app, require('./models/device/group'))
+                  cb(null, require('./routes/device/DeviceGroup'))
+                }, 'group')
+              }
             }
           ]
         },

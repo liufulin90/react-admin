@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react'
-import { Form, Input, InputNumber, Radio, Modal, Icon, Select } from 'antd'
-import { validPhone } from '../../../utils/utilsValid'
+import { Form, Input, Radio, Modal, Icon, Select } from 'antd'
+import styles from './ModalForm.less'
+import BoardChart from '../../charts/lineChart'
 
 const FormItem = Form.Item
 
@@ -16,15 +17,14 @@ const formItemLayout = {
 }
 
 const ModalForm = ({
-  modal: { curItem, type, visible },
+  modal: { curItem, type, boardModalVisible},
   loading,
+  onCancel,
   form: {
     getFieldDecorator,
     validateFields,
     resetFields
   },
-  onOk,
-  onCancel
 }) => {
 
   if(!curItem.groupList) {
@@ -45,11 +45,12 @@ const ModalForm = ({
   }
 
   const modalFormOpts = {
-    title: type === 'create' ? <div><Icon type="plus-circle-o" /> 新建设备</div> : <div><Icon type="edit" /> 修改设备</div>,
-    visible,
+    title: <div><Icon type="eye" />设备实时状态</div>,
+    visible: boardModalVisible,
     wrapClassName: 'vertical-center-modal',
+    className: styles.boardModalWidth,
     confirmLoading: loading,
-    onOk: handleOk,
+    footer: null, // 当不需要默认底部按钮时
     onCancel,
     afterClose() {
       resetFields() //必须项，编辑后如未确认保存，关闭时必须重置数据
@@ -58,6 +59,7 @@ const ModalForm = ({
 
   return (
     <Modal {...modalFormOpts}>
+      <BoardChart />
       <Form>
         <FormItem label='设备名称：' hasFeedback {...formItemLayout}>
           {getFieldDecorator('name', {
@@ -97,21 +99,6 @@ const ModalForm = ({
               }
             ]
           })(<Input />)}
-        </FormItem>
-        <FormItem label='邮箱：' hasFeedback {...formItemLayout}>
-          {getFieldDecorator('email', {
-            initialValue: curItem.email,
-            rules: [
-              {
-                required: true,
-                message: '邮箱不能为空'
-              },
-              {
-                type: 'email',
-                message: '邮箱格式不正确'
-              }
-            ]
-          })(<Input type='email'/>)}
         </FormItem>
         <FormItem label='分组：' hasFeedback {...formItemLayout}>
           {getFieldDecorator('groupId', {

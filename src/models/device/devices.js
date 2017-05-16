@@ -1,7 +1,7 @@
 import { message } from 'antd'
 import { routerRedux } from 'dva/router'
 import { create, remove, update, query, get } from '../../services/device/devices'
-import { query as queryRole } from '../../services/account/role'
+import { query as queryGroup } from '../../services/device/group'
 import { getCurPowers } from '../../utils'
 
 export default {
@@ -91,9 +91,9 @@ export default {
         }
       }
 
-      const dataRole = yield call(queryRole)
-      if(dataRole && dataRole.success) {
-        newData.curItem.roleList = dataRole.list
+      const dataGroup = yield call(queryGroup)
+      if(dataGroup && dataGroup.success) {
+        newData.curItem.groupList = dataGroup.list
       }
       yield put({ type: 'modal/setItem', payload: newData })
     },

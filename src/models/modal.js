@@ -3,6 +3,7 @@ export default {
   namespace: 'modal',
   state: {
     visible: false,
+    boardModalVisible: false,
     type: 'create',
     curItem: {}
   },
@@ -12,6 +13,9 @@ export default {
     },
     hideModal (state) {
       return { ...state, visible: false, curItem: {} }
+    },
+    changeState (state, action) {
+      return { ...state, ...action.payload}
     },
     setItem (state, action) {
       const { curItem } = action.payload

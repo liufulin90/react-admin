@@ -2,7 +2,7 @@ import React, {PropTypes} from 'react'
 import {Modal, Menu} from 'antd'
 import styles from './List.less'
 import {DataTable, DropMenu} from '../../../components/'
-import {UPDATE, STATUS, DELETE} from '../../../constants/options'
+import {UPDATE, STATUS, DELETE, DETAIL} from '../../../constants/options'
 
 const confirm = Modal.confirm
 
@@ -14,8 +14,10 @@ function List({
   loading,
   updatePower,
   deletePower,
+  boardPower,
   onDeleteItem,
   onEditItem,
+  onBoardItem,
   onStatusItem,
   location
 }) {
@@ -34,6 +36,7 @@ function List({
       [UPDATE]: onEditItem,
       [STATUS]: onStatusItem,
       [DELETE]: handleDeleteItem,
+      [DETAIL]: onBoardItem,
     } [key](record)
   }
 
@@ -66,8 +69,8 @@ function List({
       key: 'email'
     }, {
       title: '所属组',
-      dataIndex: 'roleName',
-      key: 'roleName'
+      dataIndex: 'groupName',
+      key: 'groupName'
     }, {
       title: '地区',
       dataIndex: 'address',
@@ -90,6 +93,7 @@ function List({
           <Menu onClick={({key}) => handleMenuClick(key, record)}>
             {updatePower && <Menu.Item key={STATUS}>{record.status ? '禁用' : '启用'}</Menu.Item>}
             {updatePower && <Menu.Item key={UPDATE}>编辑</Menu.Item>}
+            {boardPower && <Menu.Item key={DETAIL}>查看实时</Menu.Item>}
             {deletePower && <Menu.Item key={DELETE}>删除</Menu.Item>}
           </Menu>
         </DropMenu>

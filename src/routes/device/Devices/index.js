@@ -1,17 +1,19 @@
 import React, {PropTypes} from 'react'
 import {routerRedux} from 'dva/router'
 import {connect} from 'dva'
-import AdminList from './List'
-import AdminSearch from './Search'
-import AdminModal from './ModalForm'
+import DevicesList from './List'
+import DevicesSearch from './Search'
+import DevicesModal from './ModalForm'
+import BoardModal from './BoardForm'
 import {checkPower} from '../../../utils'
-import {ADD, UPDATE, DELETE} from '../../../constants/options'
+import {ADD, UPDATE, DELETE, DETAIL} from '../../../constants/options'
 
 function Devices({location, curPowers, dispatch, deviceList, modal, loading}) {
 
   const addPower = checkPower(ADD, curPowers)
   const updatePower = checkPower(UPDATE, curPowers)
   const deletePower = checkPower(DELETE, curPowers)
+  const boardPower = checkPower(DETAIL, curPowers)
 
   const {field, keyword} = location.query
 
@@ -39,12 +41,13 @@ function Devices({location, curPowers, dispatch, deviceList, modal, loading}) {
       })
     }
   }
-
+  let boardModalVisible = false
   const listProps = {
     deviceList,
     loading,
     updatePower,
     deletePower,
+    boardPower,
     location,
     onDeleteItem(id) {
       dispatch({type: 'deviceList/delete', payload: {id}})
@@ -58,6 +61,14 @@ function Devices({location, curPowers, dispatch, deviceList, modal, loading}) {
         }
       })
     },
+    onBoardItem(item) {
+      dispatch({
+        type: 'modal/changeState',
+        payload: {
+          boardModalVisible: true
+        }
+      })
+    },
     onStatusItem(item) {
       dispatch({
         type: 'deviceList/updateStatus',
@@ -68,6 +79,7 @@ function Devices({location, curPowers, dispatch, deviceList, modal, loading}) {
     }
   }
 
+  // 编辑设备信息
   const modalProps = {
     modal,
     loading,
@@ -85,12 +97,25 @@ function Devices({location, curPowers, dispatch, deviceList, modal, loading}) {
       dispatch({type: 'modal/hideModal'})
     }
   }
-
+  // 查看设备实时状态
+  const boardModalProps = {
+    modal,
+    loading,
+    onCancel() {
+      dispatch({
+        type: 'modal/changeState',
+        payload: {
+          boardModalVisible: false
+        }
+      })
+    }
+  }
   return (
     <div className='content-inner'>
-      <AdminSearch {...searchProps}/>
-      <AdminList {...listProps}/>
-      <AdminModal {...modalProps}/>
+      <DevicesSearch {...searchProps}/>
+      <DevicesList {...listProps}/>
+      <DevicesModal {...modalProps}/>
+      <BoardModal {...boardModalProps}/>
     </div>
   )
 }

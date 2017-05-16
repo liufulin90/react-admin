@@ -191,13 +191,6 @@ const CustomShapeBarChart = () => (
 
 const EditorPage = () => (
   <div className="content-inner">
-    <Button type="primary" size="large" style={{
-      position: 'absolute',
-      right: 0,
-      top: -48,
-    }}>
-      <a href="http://recharts.org/#/en-US/examples/TinyBarChart" target="blank">Show More</a>
-    </Button>
     <Row gutter={32}>
       <Col {...colProps}>
         <Card title="SimpleBarChart">
