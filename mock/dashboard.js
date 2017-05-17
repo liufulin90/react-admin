@@ -123,7 +123,13 @@ let dataKey = mockStorge('Dashboard', Mock.mock({
       number: 10000,
       percent: 100
     }
-  ]
+  ],
+  carData: {
+    speed: (Math.random()*100).toFixed(2) - 0,
+    rpm: (Math.random()*7).toFixed(2) - 0,
+    oil: (Math.random()*2).toFixed(2) - 0,
+    water: (Math.random()*2).toFixed(2) - 0
+  }
 }))
 
 module.exports = {

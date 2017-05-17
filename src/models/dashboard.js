@@ -186,7 +186,8 @@ export default {
     cpu: {},
     user: {
       avatar: 'http://img.hb.aicdn.com/bc442cf0cc6f7940dcc567e465048d1a8d634493198c4-sPx5BR_fw236'
-    }
+    },
+    carData: {}
   },
   subscriptions: {
     setup ({ dispatch, history }) {
@@ -198,6 +199,10 @@ export default {
             dispatch({ type: 'app/changeCurPowers', payload: { curPowers } })
             dispatch({type: 'queryWeather'})
             dispatch({type: 'query'})
+            // 轮训改变仪表盘数据
+            setInterval(() => {
+              dispatch({type: 'getCarData'})
+            }, 2000)
           } else {
             dispatch(routerRedux.push({ pathname: '/no-power' }))
           }
@@ -225,6 +230,18 @@ export default {
       yield put({type: 'queryWeatherSuccess', payload: {
         weather
       }})
+    },
+    *getCarData({
+      payload
+    }, {put}) {
+      yield put({type: 'getCarDataSuccess', payload: {
+        carData: {
+          speed: (Math.random()*100).toFixed(2) - 0,
+          rpm: (Math.random()*7).toFixed(2) - 0,
+          oil: (Math.random()*2).toFixed(2) - 0,
+          water: (Math.random()*2).toFixed(2) - 0
+        }
+      }})
     }
   },
   reducers: {
@@ -235,6 +252,12 @@ export default {
       }
     },
     queryWeather (state, action) {
+      return {
+        ...state,
+        ...action.payload
+      }
+    },
+    getCarDataSuccess (state, action) {
       return {
         ...state,
         ...action.payload

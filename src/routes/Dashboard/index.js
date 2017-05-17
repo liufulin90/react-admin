@@ -14,6 +14,10 @@ import User from './components/user'
 import styles from './index.less'
 import {color} from '../../utils'
 
+
+import GaugeCarDark from './components/gaugeCarDark'
+
+
 const bodyStyle = {
   bodyStyle: {
     height: 432,
@@ -22,7 +26,7 @@ const bodyStyle = {
 }
 
 function Dashboard ({dashboard, dispatch}) {
-  const {weather, sales, quote, numbers, recentSales, comments, completed, browser, cpu, user} = dashboard
+  const {weather, sales, quote, numbers, recentSales, comments, completed, browser, cpu, user, carData} = dashboard
   const numberCards = numbers.map((item, key) =>
     <Col key={key} lg={6} sm={12}>
       <NumberCard {...item} />
@@ -31,6 +35,9 @@ function Dashboard ({dashboard, dispatch}) {
 
   return (
     <Row gutter={24}>
+      <Col lg={12}>
+        <GaugeCarDark data={carData}/>
+      </Col>
       {numberCards}
       <Col lg={18} md={24}>
         <Card bordered={false} bodyStyle={{
@@ -107,7 +114,8 @@ Dashboard.propTypes = {
   completed: PropTypes.array,
   browser: PropTypes.array,
   cpu: PropTypes.object,
-  user: PropTypes.object
+  user: PropTypes.object,
+  carData: PropTypes.object
 }
 
 export default connect(({dashboard}) => ({dashboard}))(Dashboard)
