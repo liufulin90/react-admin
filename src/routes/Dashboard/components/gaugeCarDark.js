@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import EchartsContainer, {EChartsView} from '../../../components/EchartsContainer'
 
+import Socket from 'socket.io-client'
 /**
  * 车仪表盘
  */
@@ -290,6 +291,12 @@ class GaugeCarDark extends Component {
     }
   }
   componentDidMount() {
+    /*let SocketIO = Socket.connect(linxins.app.admin.SOCKET_HOST)
+    // SocketIO.emit('message', message); // 向服务器撒送数据
+    // 监听服务器发过来的数据pushCarData
+    SocketIO.on('pushCarData', function (data) {
+      console.log(data)
+    })*/
   }
   componentWillReceiveProps() {
     let {speed = 40, rpm = 1.5, oil = 0.5, water = 0.5} = this.props.data
@@ -299,7 +306,6 @@ class GaugeCarDark extends Component {
     this.state.options.series[3].data[0].value = water;
   }
   render() {
-    console.log(234)
     const {options} = this.state
     const echartsData = {
       options

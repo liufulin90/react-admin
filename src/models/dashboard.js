@@ -2,6 +2,7 @@ import {parse} from 'qs'
 import { routerRedux } from 'dva/router'
 import { getCurPowers } from '../utils'
 import {myCity, queryWeather, query} from '../services/dashboard'
+import Socket from 'socket.io-client'
 
 let zuimei = {
   ParseActualData: function (actual, air) {
@@ -164,6 +165,7 @@ let zuimei = {
   }
 }
 
+let SocketIO = Socket.connect(linxins.app.admin.SOCKET_HOST)
 export default {
   namespace: 'dashboard',
   state: {
@@ -199,10 +201,7 @@ export default {
             dispatch({ type: 'app/changeCurPowers', payload: { curPowers } })
             dispatch({type: 'queryWeather'})
             dispatch({type: 'query'})
-            // 轮训改变仪表盘数据
-            setInterval(() => {
-              dispatch({type: 'getCarData'})
-            }, 2000)
+            dispatch({type: 'getCarData'})
           } else {
             dispatch(routerRedux.push({ pathname: '/no-power' }))
           }
@@ -234,14 +233,22 @@ export default {
     *getCarData({
       payload
     }, {put}) {
-      yield put({type: 'getCarDataSuccess', payload: {
-        carData: {
-          speed: (Math.random()*100).toFixed(2) - 0,
-          rpm: (Math.random()*7).toFixed(2) - 0,
-          oil: (Math.random()*2).toFixed(2) - 0,
-          water: (Math.random()*2).toFixed(2) - 0
-        }
-      }})
+      // SocketIO.emit('message', message); // 向服务器撒送数据
+      console.log('2222222222222')
+      /*let data = {
+       speed: (Math.random()*100).toFixed(2) - 0,
+       rpm: (Math.random()*7).toFixed(2) - 0,
+       oil: (Math.random()*2).toFixed(2) - 0,
+       water: (Math.random()*2).toFixed(2) - 0
+       }*/
+      // 监听服务器发过来的数据pushCarData
+      yield SocketIO.on('pushCarData',  (data) => {
+        console.log(data)
+         put({type: 'getCarDataSuccess', payload: {
+          carData: data
+        }})
+      })
+
     }
   },
   reducers: {
@@ -258,6 +265,7 @@ export default {
       }
     },
     getCarDataSuccess (state, action) {
+      console.log('@@',action.payload)
       return {
         ...state,
         ...action.payload

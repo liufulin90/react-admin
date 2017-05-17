@@ -29,6 +29,7 @@ module.exports = function (webpackConfig, env) {
     'linxins.app.admin.ISMOCK': true,
     'linxins.app.admin.IS_DYNAMIC_LOAD': true,
     'linxins.app.admin.API_HOST': JSON.stringify('http://ec2-54-223-130-122.cn-north-1.compute.amazonaws.com.cn:81/v2'),
+    'linxins.app.admin.SOCKET_HOST': JSON.stringify('ws://127.0.0.1:3000'),
     'linxins.app.admin.CLIENT_ID': JSON.stringify('8_458xy3o1w2g4cgwkk0ksgs0kkkw8o4soc000g004csoo840og4'),
     'linxins.app.admin.CLIENT_SECRET': JSON.stringify('2iwh0zfunzswgss8s0ks4scoo4w080sskcowgkoc0s8swg8goo'),
     'linxins.app.admin.GRANT_TYPE': JSON.stringify('client_credentials')
