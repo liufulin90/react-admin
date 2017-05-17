@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styles from './Container.less'
 
-const Container = ({ children, ratio = 5 / 2, minHeight = 200, maxHeight = 350 }) => (
+const Container = ({ children, ratio = 5 / 2, minHeight = 200, maxHeight = 850 }) => (
   <div className={styles.container} style={{ minHeight, maxHeight }}>
     <div style={{ marginTop: `${100 / ratio}%` || '100%' }}></div>
     <div className={styles.content} style={{ minHeight, maxHeight }}>

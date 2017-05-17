@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import EchartsContainer, {EChartsView} from '../../../components/EchartsContainer'
 
-import Socket from 'socket.io-client'
+// import Socket from 'socket.io-client'
 /**
  * 车仪表盘
  */
@@ -307,12 +307,12 @@ class GaugeCarDark extends Component {
   }
   render() {
     const {options} = this.state
-    const echartsData = {
+    const echartsViewProps = {
       options
     }
     return(
-      <EchartsContainer>
-        <EChartsView {...echartsData}/>
+      <EchartsContainer maxHeight="400px">
+        <EChartsView {...echartsViewProps}/>
       </EchartsContainer>
     );
   }
