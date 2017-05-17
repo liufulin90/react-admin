@@ -73,8 +73,8 @@ const ModalForm = ({
           })(<Input />)}
         </FormItem>
         <FormItem label='是否离线' hasFeedback {...formItemLayout}>
-          {getFieldDecorator('isMale', {
-            initialValue: curItem.isMale,
+          {getFieldDecorator('isOnline', {
+            initialValue: curItem.isOnline,
             rules: [
               {
                 required: true,

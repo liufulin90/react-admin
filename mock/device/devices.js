@@ -7,18 +7,51 @@ let dataKey = mockStorge('DeviceDevicesList', Mock.mock({
   'data|60': [
     {
       'id|+1': 1,
-      name: '@cname',
+      name: '@cword(3, 5)',
       phone: /^1[34578]\d{9}$/,
       'age|11-70': 1,
       address: '@province()',
-      isMale: '@boolean',
+      isOnline: '@boolean',
       email: '@email',
       status: '@boolean',
       'groupId|1': [1, 2, 3],
       'groupName|1': function() {
         return ["GROUP1", "GROUP2", "GROUP3"][this.groupId - 1]
       },
+      config: {
+        hasTemperature: '@boolean',
+        hasLocation: '@boolean',
+        hasSpeed: '@boolean',
+        hasAlert: '@boolean'
+      },
+      location: function () {
+        return this.config.hasLocation ? {
+          lat: Mock.mock('@float(28, 41, 6, 6)'),
+          lon: Mock.mock('@float(98, 118, 6, 6)')
+        } : null
+      },
+      temperature: function () {
+        return this.config.hasTemperature ? Mock.Random.float(0, 100, 1, 2) : null
+      },
+      historyTemperature: function () {
+        return this.config.hasTemperature ? (function () {
+          var timeVale = parseInt(new Date().getTime()/1000 - 10*200)
+          var data =  Mock.mock({
+            'data|200': [
+              {
+                temperature: '@float(0, 100, 1, 2)',
+                'time|+10': timeVale
+              }
+            ]
+          })
+          return data
+        })() : null
+      },
+      speed: function () {
+        return this.config.hasSpeed ? Mock.Random.float(0, 150, 1, 2) : null
+      },
       createTime: '@datetime',
+      realTime: Mock.Random.now('second'),
       avatar: function () {
         return Mock.Random.image('100x100', Mock.Random.color(), '#757575', 'png', this.name.substr(0, 1))
       }
