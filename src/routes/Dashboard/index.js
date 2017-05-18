@@ -14,9 +14,7 @@ import User from './components/user'
 import styles from './index.less'
 import {color} from '../../utils'
 
-
 import GaugeCarDark from './components/gaugeCarDark'
-
 
 const bodyStyle = {
   bodyStyle: {

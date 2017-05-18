@@ -38,17 +38,28 @@ class EChartsView extends Component {
   }
   render() {
     let {chartId} = this.state
+    let {styles, echartStyle} = this.props
     let style = {
+      height: '100%',
+      ...styles
+    }
+    // 正对echarts图表设定样式
+    let setChartStyle = {
       height: '100%'
     }
+    echartStyle && Object.assign(setChartStyle, echartStyle)
     return(
-      <div id={chartId} style={style}></div>
+      <div style={style}>
+        <div id={chartId} style={{height: '100%', ...setChartStyle}}></div>
+      </div>
     )
   }
 }
 
 EChartsView.propTypes = {
-  options: PropTypes.object
+  options: PropTypes.object,
+  styles: PropTypes.object,
+  echartStyle: PropTypes.object
 }
 
 export default EChartsView

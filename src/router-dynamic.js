@@ -194,6 +194,15 @@ export default function({history, app}) {
                   cb(null, require('./routes/charts/pieChart'))
                 }, 'pieChart')
               }
+            }, {
+              path: 'echarts',
+              name: 'echarts',
+              getComponent(nextState, cb) {
+                require.ensure([], require => {
+                  registerModel(app, require('./models/dashboard'))
+                  cb(null, require('./routes/charts/echarts'))
+                }, 'echarts')
+              }
             }
           ]
         },

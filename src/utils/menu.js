@@ -178,6 +178,13 @@ const menu = [
         name: '饼状',
         icon: 'pie-chart',
         power: [1, 2]
+      },
+      {
+        id: _.uniqueId(),
+        key: 'echarts',
+        name: 'ECharts',
+        icon: 'line-chart',
+        power: [1, 2]
       }
     ]
   },

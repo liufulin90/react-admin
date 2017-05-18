@@ -227,7 +227,7 @@ export default {
       payload
     }, {call, put}) {
       const data = yield call(query, parse(payload))
-      yield put({type: 'queryWeather', payload: {...data}})
+      yield put({type: 'saveState', payload: {...data}})
     },
     *queryWeather ({
       payload
@@ -239,30 +239,18 @@ export default {
       const weather = zuimei.ParseActualData(data.data.actual)
       weather.city = myCityData.selectCityName
 
-      yield put({type: 'queryWeatherSuccess', payload: {
+      yield put({type: 'saveState', payload: {
         weather
       }})
     },
     *getCarData({
       payload
     }, {put}) {
-      yield put({type: 'getCarDataSuccess', payload})
+      yield put({type: 'saveState', payload})
     }
   },
   reducers: {
-    queryWeatherSuccess (state, action) {
-      return {
-        ...state,
-        ...action.payload
-      }
-    },
-    queryWeather (state, action) {
-      return {
-        ...state,
-        ...action.payload
-      }
-    },
-    getCarDataSuccess (state, action) {
+    saveState (state, action) {
       return {
         ...state,
         ...action.payload

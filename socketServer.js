@@ -43,12 +43,14 @@ io.on('connection', (socket) => {
    */
   var pushCarDataTimer = setInterval(function () {
     // 向客户端发送数据
-    io.emit('pushCarData', {
+    var pushCarData = {
       speed: (Math.random() * 100).toFixed(2) - 0,
       rpm: (Math.random() * 7).toFixed(2) - 0,
       oil: (Math.random() * 2).toFixed(2) - 0,
       water: (Math.random() * 2).toFixed(2) - 0
-    });
+    }
+    io.emit('pushCarData', pushCarData);
+    console.log('send car data:', pushCarData);
   }, 2500);
   socket.on('disconnect', function () {
     clearInterval(pushCarDataTimer);

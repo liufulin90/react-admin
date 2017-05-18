@@ -291,12 +291,6 @@ class GaugeCarDark extends Component {
     }
   }
   componentDidMount() {
-    /*let SocketIO = Socket.connect(linxins.app.admin.SOCKET_HOST)
-    // SocketIO.emit('message', message); // 向服务器撒送数据
-    // 监听服务器发过来的数据pushCarData
-    SocketIO.on('pushCarData', function (data) {
-      console.log(data)
-    })*/
   }
   componentWillReceiveProps() {
     let {speed = 40, rpm = 1.5, oil = 0.5, water = 0.5} = this.props.data
@@ -311,7 +305,7 @@ class GaugeCarDark extends Component {
       options
     }
     return(
-      <EchartsContainer maxHeight="400px">
+      <EchartsContainer maxHeight={400}>
         <EChartsView {...echartsViewProps}/>
       </EchartsContainer>
     );
@@ -319,7 +313,7 @@ class GaugeCarDark extends Component {
 }
 
 GaugeCarDark.propTypes = {
-  // options: PropTypes.object
+  data: PropTypes.object
 }
 
 export default GaugeCarDark
