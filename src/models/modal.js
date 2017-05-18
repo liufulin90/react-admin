@@ -7,6 +7,11 @@ export default {
     type: 'create',
     curItem: {}
   },
+  effects: {
+    *changeStateAction({payload}, {put}){
+      yield put({type: 'changeState', payload})
+    }
+  },
   reducers: {
     showModal (state, action) {
       return { ...state, visible: true, ...action.payload }

@@ -10,7 +10,21 @@
     }
   }
 }
-
+.scaleIcon{
+  position: absolute;
+  right: 10px;
+  top: 10px;;
+  color: #fff;
+  font-size: 20px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  text-align: center;
+  background-color: #999;
+  padding: 6px;
+  line-height: 20px;
+  cursor: pointer;
+}
 .content {
   position: absolute;
   left: 0;
@@ -18,3 +32,16 @@
   top: 0;
   bottom: 0;
 }
+
+// 放大后的图层样式
+.isBigShow{
+  max-height: none;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 1000;
+  background: #eee;
+}
+// 缩小后还原

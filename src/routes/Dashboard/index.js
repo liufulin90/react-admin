@@ -33,7 +33,7 @@ function Dashboard ({dashboard, dispatch}) {
 
   return (
     <Row gutter={24}>
-      <Col lg={24}>
+      <Col lg={12}>
         <GaugeCarDark data={carData}/>
       </Col>
       {numberCards}

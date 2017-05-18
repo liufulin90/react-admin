@@ -8,7 +8,8 @@ class EChartsView extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      chartId: new Date().getTime()
+      chartId: new Date().getTime()+parseInt(Math.random()*1000),
+      thisViewId: new Date().getTime()+parseInt(Math.random()*1000)
     }
   }
   componentWillMount() {
@@ -37,7 +38,7 @@ class EChartsView extends Component {
     this.initChart(options)
   }
   render() {
-    let {chartId} = this.state
+    let {chartId, thisViewId} = this.state
     let {styles, echartStyle} = this.props
     let style = {
       height: '100%',
@@ -49,7 +50,7 @@ class EChartsView extends Component {
     }
     echartStyle && Object.assign(setChartStyle, echartStyle)
     return(
-      <div style={style}>
+      <div style={style} id={thisViewId}>
         <div id={chartId} style={{height: '100%', ...setChartStyle}}></div>
       </div>
     )
