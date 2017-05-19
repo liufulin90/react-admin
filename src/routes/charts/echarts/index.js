@@ -4,6 +4,7 @@ import {connect} from 'dva'
 import { Row, Col, Card } from 'antd'
 import {EChartsClock} from '../../../components/EchartsContainer'
 import GaugeCarDark from '../../Dashboard/components/gaugeCarDark'
+import Wraper from '../../../components/Widgets/Wraper'
 
 const colProps = {
   lg: 12,
@@ -11,22 +12,40 @@ const colProps = {
 }
 
 const EditorPage = ({dashboard}) => {
-  console.log(dashboard)
+  // console.log(dashboard)
   const {carData} = dashboard
   return (
     <div className="content-inner">
-      <Row gutter={32}>
-        <Col {...colProps}>
-          <Card title="EChart Clock">
-            <EChartsClock />
-          </Card>
-        </Col>
-        <Col {...colProps}>
-          <Card title="EChart Clock">
-            <GaugeCarDark data={carData}/>
-          </Card>
-        </Col>
-      </Row>
+      <Wraper>
+        <div>11 我可以拖拽</div>
+      </Wraper>
+      <Wraper>
+        <div>22</div>
+      </Wraper>
+      <Wraper>
+        <div>33</div>
+      </Wraper>
+      <Wraper>
+        <div>44</div>
+      </Wraper>
+      <Wraper>
+        <div>55</div>
+      </Wraper>
+      <Wraper>
+        <div>66</div>
+      </Wraper>
+      <Wraper>
+        <div>77</div>
+      </Wraper>
+      <Wraper>
+        <div>88</div>
+      </Wraper>
+      <Wraper>
+        <GaugeCarDark data={carData}/>
+      </Wraper>
+      <Wraper ratio={1}>
+        <EChartsClock />
+      </Wraper>
     </div>
   )
 }
