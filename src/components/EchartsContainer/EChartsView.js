@@ -20,8 +20,13 @@ class EChartsView extends Component {
    */
   initChart = (options) => {
     let {chartId} = this.state
+    // 此处这样处理防止 echarts 内存泄露
+    var myChart = echarts.getInstanceByDom(document.getElementById(chartId));
+    if (myChart === undefined) {
+      myChart = echarts.init(document.getElementById(chartId));
+    }
     // 基于准备好的dom，初始化echarts实例
-    var myChart = echarts.init(document.getElementById(chartId));
+    // var myChart = echarts.init(document.getElementById(chartId));
     // 绘制图表
     myChart.setOption(options);
   }
