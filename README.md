@@ -1,4 +1,5 @@
 # react-admin
+基于react，ant-design，dva，Mock 企业级后台管理系统最佳实践
 
 [![React Native](https://img.shields.io/badge/react-^15.4.1-brightgreen.svg?style=flat-square)](https://github.com/facebook/react)
 [![Ant Design](https://img.shields.io/badge/ant--design-^2.9.1-yellowgreen.svg?style=flat-square)](https://github.com/ant-design/ant-design)
