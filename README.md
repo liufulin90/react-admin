@@ -16,7 +16,7 @@
 
 ## 演示地址
 
-[点击预览](http://www.linxins.com:81/)
+[点击预览](http://react-admin.linxins.com/)
 
 #### 登录账号
 
