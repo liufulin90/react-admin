@@ -2,12 +2,12 @@
 import './index.html'
 import 'nprogress/nprogress.css'
 import dva from 'dva'
-import { browserHistory } from 'dva/router'
+import { browserHistory, hashHistory } from 'dva/router'
 import createLoading from 'dva-loading'
 
 // 1. Initialize
 const app = dva({
-  history: browserHistory,
+  history: hashHistory,
   onError(error) {
     console.error("app onError -- ", error)
   }

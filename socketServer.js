@@ -1,7 +1,7 @@
 // #!/usr/bin/env node
-import http from 'http'
-import express from 'express'
-import socketIo from 'socket.io'
+var http = require('http');
+var express = require('express');
+var socketIo = require('socket.io');
 
 let app = express()
 /**

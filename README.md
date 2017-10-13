@@ -76,7 +76,8 @@ npm install 或者 yarn 或者 yarn install
 开发：
 
 ```bash
-npm run dev    # 使用mock拦截请求，数据存储在localStroge里
+$ npm run dev    # 使用mock拦截请求，数据存储在localStroge里
+$ node socketServer.js    # 一个node server，模拟轿车的实时数据。
 
 打开 http://localhost:8000
 ```
@@ -86,9 +87,9 @@ npm run dev    # 使用mock拦截请求，数据存储在localStroge里
 
 ```bash
 
-npm run build-dev local环境发布
-npm run build-staging staging 环境发布
-npm run build-release release 环境发布
+npm run build-dev        #本地环境发布
+npm run build-staging    #staging 环境发布
+npm run build-release    #release 环境发布
 
 build后的文件将会生成dist目录
 ```

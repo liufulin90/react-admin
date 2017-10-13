@@ -15,6 +15,7 @@ import styles from './index.less'
 import {color} from '../../utils'
 
 import GaugeCarDark from './components/gaugeCarDark'
+import {EChartsClock} from '../../components/EchartsContainer'
 
 const bodyStyle = {
   bodyStyle: {
